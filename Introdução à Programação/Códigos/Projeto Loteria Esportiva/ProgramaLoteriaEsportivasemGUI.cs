@@ -29,7 +29,7 @@ namespace LoteriaEsportivasemGUI
             }
         }
 
-        static bool ChecaParametro(string enderecoParametro)
+        static bool ChecarParametro(string enderecoParametro)
         {
             // checa se parâmetro "aleatorio" existe e seu valor
             // se não existe, cria um como verdadeiro
@@ -222,7 +222,7 @@ namespace LoteriaEsportivasemGUI
 
             // Inicialização
                         
-            aleatorio = ChecaParametro(enderecoParametro);
+            aleatorio = ChecarParametro(enderecoParametro);
             GerarResultado(Resultado, ref aleatorio);
             BoasVindas();
 
