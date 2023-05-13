@@ -138,75 +138,75 @@ namespace ProjetoMatrizes
                     if(numeroColunas != numeroLinhas) minhasFlags.matrizQuadrada = false;
                 }
                 else numeroColunas = numeroLinhas;
+                if((numeroLinhas<=0) || (numeroColunas<=0)) minhasFlags.argumentoValido = false;
 
-                int[,] matrizRecipiente = new int[numeroLinhas,numeroColunas];
-                int[,] matrizSaida = new int [numeroColunas, numeroLinhas];
-                if(moduloChamado == "trans")
-                {
-                    if(File.Exists(enderecoMatrizTranspor)){
-                        string matrizTranspor = File.ReadAllText(enderecoMatrizTranspor);
-                        i = 0;
-                        foreach (var linha in matrizTranspor.Split('\n'))
-                        {
-                            j = 0;
-                            foreach (var coluna in linha.Split(' '))
+                if(minhasFlags.argumentoValido){
+                    int[,] matrizRecipiente = new int[numeroLinhas,numeroColunas];
+                    int[,] matrizSaida = new int [numeroColunas, numeroLinhas];
+                    if(moduloChamado == "trans")
+                    {
+                        if(File.Exists(enderecoMatrizTranspor)){
+                            string matrizTranspor = File.ReadAllText(enderecoMatrizTranspor);
+                            i = 0;
+                            foreach (var linha in matrizTranspor.Split('\n'))
                             {
-                                matrizRecipiente[i,j] = int.Parse(coluna);
-                                ++j;
-                                if(j>numeroColunas) minhasFlags.tamanhoMatrizCoincide = false;
+                                j = 0;
+                                foreach (var coluna in linha.Split(' '))
+                                {
+                                    matrizRecipiente[i,j] = int.Parse(coluna);
+                                    ++j;
+                                    if(j>numeroColunas) minhasFlags.tamanhoMatrizCoincide = false;
+                                }
+                                if(j<numeroColunas) minhasFlags.tamanhoMatrizCoincide = false;
+                                ++i;
+                                if(i>numeroLinhas) minhasFlags.tamanhoMatrizCoincide = false;
                             }
-                            if(j<numeroColunas) minhasFlags.tamanhoMatrizCoincide = false;
-                            ++i;
-                            if(i>numeroLinhas) minhasFlags.tamanhoMatrizCoincide = false;
+                            if(i<numeroLinhas) minhasFlags.tamanhoMatrizCoincide = false;
                         }
-                        if(i<numeroLinhas) minhasFlags.tamanhoMatrizCoincide = false;
+                        else minhasFlags.arquivoEntradaExiste = false;
                     }
-                    else minhasFlags.arquivoEntradaExiste = false;
-                }
-                else
-                {
-                    for (i=0; i<numeroLinhas; ++i)
-                        for (j=0; j<numeroColunas; ++j)
-                            matrizRecipiente[i,j] = 0;
-                }
+                    else
+                    {
+                        for (i=0; i<numeroLinhas; ++i)
+                            for (j=0; j<numeroColunas; ++j)
+                                matrizRecipiente[i,j] = 0;
+                    }
                 
-                switch(moduloChamado)
-                {
-                    case "aleat":
-                        Aleatoria(matrizRecipiente, numeroLinhas, numeroColunas);
-                        break;
-                    case "id":
-                        if(minhasFlags.matrizQuadrada) Identidade(matrizRecipiente, numeroLinhas);
-                        break;
-                    case "diag":
-                        Diagonal(matrizRecipiente, numeroLinhas, numeroColunas);
-                        break;
-                    case "toep":
-                        Toeplitz(matrizRecipiente, numeroLinhas, numeroColunas);
-                        break;
-                    case "orto":
-                        minhasFlags.moduloPronto = false;
-//                        if(minhasFlags.matrizQuadrada) Ortogonal(matrizRecipiente, numeroLinhas);
-                        break;
-                    case "trinf":
-                        if(minhasFlags.matrizQuadrada) TriangularInferior(matrizRecipiente, numeroLinhas);
-                        break;
-                    case "trsup":
-                        if(minhasFlags.matrizQuadrada) TriangularSuperior(matrizRecipiente, numeroLinhas);
-                        break;
-                    case "trans":
-                        if(minhasFlags.arquivoEntradaExiste && minhasFlags.tamanhoMatrizCoincide)
-                            Transposta(matrizRecipiente, matrizSaida, numeroLinhas, numeroColunas);
-                        break;
-                    default:
-                        minhasFlags.argumentoValido = false;
-                        break;
-                }
+                    switch(moduloChamado)
+                    {
+                        case "aleat":
+                            Aleatoria(matrizRecipiente, numeroLinhas, numeroColunas);
+                            break;
+                        case "id":
+                            if(minhasFlags.matrizQuadrada) Identidade(matrizRecipiente, numeroLinhas);
+                            break;
+                        case "diag":
+                            Diagonal(matrizRecipiente, numeroLinhas, numeroColunas);
+                            break;
+                        case "toep":
+                            Toeplitz(matrizRecipiente, numeroLinhas, numeroColunas);
+                            break;
+                        case "orto":
+                            minhasFlags.moduloPronto = false;
+//                            if(minhasFlags.matrizQuadrada) Ortogonal(matrizRecipiente, numeroLinhas);
+                            break;
+                        case "trinf":
+                            if(minhasFlags.matrizQuadrada) TriangularInferior(matrizRecipiente, numeroLinhas);
+                            break;
+                        case "trsup":
+                            if(minhasFlags.matrizQuadrada) TriangularSuperior(matrizRecipiente, numeroLinhas);
+                            break;
+                        case "trans":
+                            if(minhasFlags.arquivoEntradaExiste && minhasFlags.tamanhoMatrizCoincide)
+                                Transposta(matrizRecipiente, matrizSaida, numeroLinhas, numeroColunas);
+                            break;
+                        default:
+                            minhasFlags.argumentoValido = false;
+                            break;
+                    }
 
-                // Saída
+                    // Saída
                 
-                if (minhasFlags.argumentoValido)
-                {
                     if(!minhasFlags.arquivoEntradaExiste) Console.WriteLine("Sem arquivo de entrada. Encerrando...");
                     else if(!minhasFlags.tamanhoMatrizCoincide) Console.WriteLine("Tamanho da matriz no arquivo de entrada difere dos argumentos informados. Encerrando...");
                     else if(!minhasFlags.moduloPronto) Console.WriteLine("Desculpe, mas infelizmente o módulo ainda não está pronto. Encerrando...");
@@ -242,7 +242,7 @@ namespace ProjetoMatrizes
                             default:
                                 break;
                         }
-                        
+                
                         if(moduloChamado == "trans")
                         {
                             for(i=0; i<numeroColunas; ++i){
@@ -262,7 +262,7 @@ namespace ProjetoMatrizes
                         }
                     }
                 }
-                else Console.WriteLine("Argumento desconhecido. Encerrando...");
+                else Console.WriteLine("Argumento inválido. Encerrando...");
 
             }
 
