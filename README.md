@@ -9,3 +9,6 @@ Repositório para códigos do curso de Jogos Digitais na UNEB.
 * 09/04/2023: Projeto Loteria Esportiva de Introdução à Programação carregado.
     * Versão sem GUI.
     * Esse é um projeto que foi aplicado a turmas anteriores; não espero que ele seja o que será cobrado de minha turma.
+    * Correção: ele foi, mas valendo pontos extras.
+* 13/05/2023: Projeto Matrizes de Introdução à Programação carregado.
+    * Faltando o módulo para geração de matrizes (aleatórias) ortogonais.
