@@ -17,8 +17,7 @@ namespace Lista1Exercicio2{
             idade = int.Parse(Console.ReadLine());
             
             // Processamento
-            dias = idade*365+idade/4+182;
-            if(idade%4 == 0) dias++;
+            dias = idade*365+idade/4+183;
             
             // Saída
             Console.WriteLine("{0}, você tem aproximadamente {1} dias de vida!", nome, dias);

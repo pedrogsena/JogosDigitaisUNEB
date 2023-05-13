@@ -25,9 +25,9 @@ namespace Lista1Exercicio6{
       data2ano = int.Parse(Console.ReadLine());
 
       // Processamento
-      difdias = data2dia - data1dia;
-      difmeses = data2mes - data1mes;
       difanos = data2ano - data1ano;
+      difmeses = 12*difanos + (data2mes - data1mes);
+      difdias = 30*difmeses + (data2dia - data1dia);
       
       // Saída
       Console.WriteLine("Diferença de dias: {0}", difdias);
