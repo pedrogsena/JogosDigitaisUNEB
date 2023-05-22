@@ -105,7 +105,7 @@ namespace Lista6Exercicio1
       if(func.Classe == '1') modificadorClasse = 1.3;
       else modificadorClasse = 1.9;
 
-      mysal.SalarioHorasNormais = modificadorClasse * Convert.ToDouble(func.HorasNormais) * SalarioHoraReferencia;
+      mysal.SalarioHorasNormais = 4 * modificadorClasse * Convert.ToDouble(func.HorasNormais) * SalarioHoraReferencia;
       mysal.SalarioHorasExtras = modificadorClasse * Convert.ToDouble(func.HorasExtras) * SalarioHoraReferencia * (1 + adicionalHorasExtras);
       mysal.SalarioBruto = mysal.SalarioHorasNormais + mysal.SalarioHorasExtras;
       mysal.DeducaoINSS = mysal.SalarioBruto * percentualINSS;
