@@ -12,3 +12,4 @@ Repositório para códigos do curso de Jogos Digitais na UNEB.
     * (13/05/2023) Correção: ele foi, mas valendo pontos extras.
 * 13/05/2023: Projeto Matrizes de Introdução à Programação carregado.
     * Faltando o módulo para geração de matrizes (aleatórias) ortogonais.
+* 08/06/2023: Práticas de Orientação a Objetos de Introdução à Programação (2023.1) carregadas.
