@@ -54,7 +54,10 @@ namespace SempreEmForma {
     public void AumentarPeso(int novopeso)
     {
         if(novopeso <= 0) Console.WriteLine("ERRO! Peso inválido.");
-        else if(novopeso > peso) setpeso(novopeso);
+        else if(novopeso > peso){
+            setpeso(novopeso);
+            Console.WriteLine("Peso atualizado.");
+        }
         else Console.WriteLine("ERRO! Peso informado menor que o atual.");
     }
     
@@ -62,7 +65,10 @@ namespace SempreEmForma {
     public void ReduzirPeso(int novopeso)
     {
         if(novopeso <= 0) Console.WriteLine("ERRO! Peso inválido.");
-        else if(novopeso < peso) setpeso(novopeso);
+        else if(novopeso < peso){
+            setpeso(novopeso);
+            Console.WriteLine("Peso atualizado.");
+        }
         else Console.WriteLine("ERRO! Peso informado maior que o atual.");
     }
     
@@ -75,9 +81,10 @@ namespace SempreEmForma {
 //      Console.WriteLine("Altura: {0} m", mario.getaltura());
 //      Console.WriteLine("IMC: {0}", mario.IMC());
 
-      string nome;
-      int peso;
-      double altura;
+      string nome="";
+      int peso=0;
+      double altura=0.0;
+      int novopeso=0;
       
       /*Entrada*/
       
@@ -95,6 +102,30 @@ namespace SempreEmForma {
       Console.WriteLine("Altura: {0} m", novapessoa.getaltura());
       Console.WriteLine("IMC: {0}", novapessoa.IMC());
       novapessoa.AvaliarIMC();
+      if(novapessoa.IMC()>25)
+      {
+          do
+          {
+            Console.Write("Informe novo peso (kg): ");
+            novopeso = int.Parse(Console.ReadLine());
+          }
+          while(novopeso > novapessoa.getpeso());
+          novapessoa.ReduzirPeso(novopeso);
+          Console.WriteLine("Novo IMC = {0}", novapessoa.IMC());
+          novapessoa.AvaliarIMC();
+      }
+      else if(novapessoa.IMC()<18.5)
+      {
+          do
+          {
+            Console.Write("Informe novo peso (kg): ");
+            novopeso = int.Parse(Console.ReadLine());
+          }
+          while(novopeso < novapessoa.getpeso());
+          novapessoa.AumentarPeso(novopeso);
+          Console.WriteLine("Novo IMC = {0}", novapessoa.IMC());
+          novapessoa.AvaliarIMC();
+      }
 
     }
   }
