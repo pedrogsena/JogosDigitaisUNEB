@@ -108,9 +108,9 @@ namespace SempreEmForma {
           {
             Console.Write("Informe novo peso (kg): ");
             novopeso = int.Parse(Console.ReadLine());
+            novapessoa.ReduzirPeso(novopeso);
           }
           while(novopeso > novapessoa.getpeso());
-          novapessoa.ReduzirPeso(novopeso);
           Console.WriteLine("Novo IMC = {0}", novapessoa.IMC());
           novapessoa.AvaliarIMC();
       }
@@ -120,9 +120,9 @@ namespace SempreEmForma {
           {
             Console.Write("Informe novo peso (kg): ");
             novopeso = int.Parse(Console.ReadLine());
+            novapessoa.AumentarPeso(novopeso);
           }
           while(novopeso < novapessoa.getpeso());
-          novapessoa.AumentarPeso(novopeso);
           Console.WriteLine("Novo IMC = {0}", novapessoa.IMC());
           novapessoa.AvaliarIMC();
       }
