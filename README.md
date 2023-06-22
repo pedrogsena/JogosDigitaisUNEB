@@ -14,3 +14,4 @@ Repositório para códigos do curso de Jogos Digitais na UNEB.
     * Faltando o módulo para geração de matrizes (aleatórias) ortogonais.
 * 08/06/2023: Práticas de Orientação a Objetos de Introdução à Programação (2023.1) carregadas.
 * 12/06/2023: Outros Códigos de Orientação a Objetos carregados.
+* 22/06/2023: Arquivos da Segunda Prova carregados.
