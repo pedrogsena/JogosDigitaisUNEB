@@ -15,3 +15,4 @@ Repositório para códigos do curso de Jogos Digitais na UNEB.
 * 08/06/2023: Práticas de Orientação a Objetos de Introdução à Programação (2023.1) carregadas.
 * 12/06/2023: Outros Códigos de Orientação a Objetos carregados.
 * 22/06/2023: Arquivos da Segunda Prova carregados.
+* 28/08/2023: Diretório para Programação em Jogos (2023.2) criado.
